@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Requests — Full-Stack App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="not-authenticated">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="index.html">Full-Stack App</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item role-admin">
+              <a class="nav-link" href="employees.html">Employees</a>
+            </li>
+            <li class="nav-item role-admin">
+              <a class="nav-link" href="accounts.html">Accounts</a>
+            </li>
+            <li class="nav-item role-admin">
+              <a class="nav-link" href="departments.html">Departments</a>
+            </li>
+            <li class="nav-item dropdown" id="nav-auth">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span id="nav-username">User</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                <li><a class="dropdown-item active" href="requests.html">My Requests</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item text-danger" href="#" id="btn-logout">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>My Requests</h2>
+        <button class="btn btn-success btn-sm" id="btn-new-request">+ New Request</button>
+      </div>
+
+      <p class="text-muted" id="requests-empty-msg">You have no requests yet.</p>
+
+      <table class="table table-bordered table-sm d-none" id="requests-table">
+        <thead class="table-dark">
+          <tr><th>Type</th><th>Items</th><th>Status</th><th>Actions</th></tr>
+        </thead>
+        <tbody id="requests-table-body"></tbody>
+      </table>
+
+      <!-- New Request Modal -->
+      <div class="modal fade" id="requestModal" tabindex="-1" aria-labelledby="requestModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="requestModalLabel">New Request</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label class="form-label">Type</label>
+                <select class="form-select" id="req-type">
+                  <option>Equipment</option>
+                  <option>Leave</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <label class="form-label">Items</label>
+              <div id="req-items-list">
+                <div class="req-item-row d-flex gap-2 mb-2">
+                  <input type="text" class="form-control" placeholder="Item name" />
+                  <input type="number" class="form-control" style="width:70px" value="1" min="1" />
+                  <button class="btn btn-outline-danger btn-sm remove-item">x</button>
+                </div>
+              </div>
+              <button class="btn btn-outline-secondary btn-sm mt-1" id="btn-add-req-item">+ Add Item</button>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" id="btn-submit-request">Submit Request</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmI5O0RZbVGF8/0vj4BbNk0ELUZ" crossorigin="anonymous"></script>
+    <script src="nav.js"></script>
+    <script src="requests.js"></script>
+  </body>
+</html>

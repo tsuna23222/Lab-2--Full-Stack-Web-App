@@ -1,15 +1,107 @@
+/* ============================================================
+   style.css — Custom Styles
+   Full-Stack App (Student Build) — Phase 1
+============================================================ */
+
+/* ── CSS Custom Properties ── */
 :root {
-    --primary-color: #0d6efd;
-    --secondary-color: #6c757d;
-    --background-color: #f8f9fa;
-    --text-family: #212529;
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  --primary-color: #0d6efd;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* ── Base ── */
 body {
-        font-family: var(--font-family);
-        background-color: var(--background-color);
-        color: var(--text-color);
-        margin: 0;
-        padding: 0;
-}   
+  font-family: var(--font-family);
+  background-color: #f8f9fa;
+  color: #212529;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================================
+   PHASE 1 — TASK 3: Required CSS Rules
+   These are the exact rules specified in the activity guide.
+============================================================ */
+
+/* All pages are hidden by default */
+.page {
+  display: none;
+}
+
+/* Only the active page is shown */
+.page.active {
+  display: block;
+}
+
+/* Hide logged-in elements when NOT authenticated */
+body.not-authenticated .role-logged-in {
+  display: none;
+}
+
+/* Hide logged-out elements when authenticated */
+body.authenticated .role-logged-out {
+  display: none;
+}
+
+/* Admin links are hidden by default */
+.role-admin {
+  display: none !important;
+}
+
+/* Admin links appear when body has .is-admin */
+body.is-admin .role-admin {
+  display: block !important;
+}
+
+/* ============================================================
+   SUPPORTING STYLES
+============================================================ */
+
+/* Smooth page transition */
+.page.active {
+  animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+/* Form card container — used across Register, Login, Profile, etc. */
+.form-card {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 1.5rem;
+  max-width: 480px;
+}
+
+/* Navbar brand */
+.navbar-brand {
+  font-size: 1.15rem;
+  letter-spacing: 0.4px;
+}
+
+/* Danger dropdown item hover */
+.dropdown-item.text-danger:hover {
+  background-color: #fff0f0;
+}
+
+/* Inline code styling */
+code {
+  background-color: #e9ecef;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.88em;
+  color: #c7254e;
+}
+
+/* Tables */
+.table th {
+  font-size: 0.875rem;
+}
+
+/* Badge overrides */
+.badge.bg-success {
+  font-size: 0.8rem;
+}
